@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ControlPadScript : MonoBehaviour {
 
     public GameObject playerBullet;
+    public AudioSource shootSound;
     Camera mCamera;
     int iColour = 0;
     Image image;
@@ -35,6 +36,7 @@ public class ControlPadScript : MonoBehaviour {
 
     void OnTap(Vector3 fingerPos)
     {
+        shootSound.Play();
         iColour += 1;
         image.color = colours[iColour];
         if (iColour >= colours.Length - 1)
