@@ -19,8 +19,8 @@ public class ControlPadScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        // Touch controls
-        for (int i = 0; i < Input.touchCount; i++ )
+        // Touch controls | Can't have more than 5 fingers at once.
+        for (int i = 0; i < Input.touchCount && Input.touchCount <= 5; i++ )
         {
             if (Input.GetTouch(i).phase == TouchPhase.Began)
             {

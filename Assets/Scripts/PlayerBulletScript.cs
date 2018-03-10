@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class PlayerBulletScript : MonoBehaviour {
 
-    ScoreboardScript sb;
     public int damage;
     public int speed;
-	
-    void Start()
-    {
-        sb = GameObject.FindWithTag("Scoreboard").GetComponent<ScoreboardScript>(); 
-    }
 
 	// Update is called once per frame
 	void Update () {
@@ -20,9 +14,18 @@ public class PlayerBulletScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (!coll.CompareTag("Player") && !coll.CompareTag("PlayerHitbox"))
+        // Ignore all collision with "PlayerHitbox" since this is where the bullet get instantiated.
+        if (coll.CompareTag("PlayerHitbox"))
         {
-            sb.IncreaseScore();
+            return;
+        }
+        else if (coll.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            // Probably collided with the enemy spawner, which is off the screen.
             Destroy(gameObject);
         }
     }

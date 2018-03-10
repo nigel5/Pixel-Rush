@@ -5,13 +5,13 @@ using UnityEngine;
 public class EnemySpriteScript : MonoBehaviour {
 
 	public int health;
-	public int shield;
-	public int speed;
+	float speed;
+    ScoreboardScript sb;
 
-	// 1: Straight down
-	// 2: Diagonal
-	// 3: Crazy
-	public int movementType;
+    // 1: Straight down
+    // 2: Diagonal
+    // 3: Crazy
+    public int movementType;
 	Vector2 movementDir;
 
 	public bool canShoot;
@@ -19,7 +19,11 @@ public class EnemySpriteScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (movementType == 1) {
+        speed = Random.Range(5.0F, 10.0F);
+        health = Random.Range(1, 4);
+        sb = GameObject.FindWithTag("Scoreboard").GetComponent<ScoreboardScript>();
+
+        if (movementType == 1) {
 			movementDir = Vector2.down;
 		}
 		else
@@ -33,7 +37,8 @@ public class EnemySpriteScript : MonoBehaviour {
 	void Update () {
         if (health <= 0)
         {
-            Destroy(this);
+            sb.IncreaseScore();
+            Destroy(gameObject);
         }
 
         gameObject.transform.Translate(movementDir * Time.deltaTime * speed);
@@ -41,7 +46,10 @@ public class EnemySpriteScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.CompareTag("Player")) Destroy(gameObject);
+        if (coll.CompareTag("Player"))
+        {
+            health -= 1;
+        }
         else if (coll.CompareTag("PlayerHitbox"))
         {
             // gameover...
