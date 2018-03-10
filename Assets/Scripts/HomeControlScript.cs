@@ -6,6 +6,6 @@ using UnityEngine.SceneManagement;
 public class HomeControlScript : MonoBehaviour {
     public void Play()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

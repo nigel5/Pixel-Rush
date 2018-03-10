@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ScoreboardScript : MonoBehaviour {
+
     EnemySpawnerScript enemySpawner;
     Text scoreText;
     public int currentScore = 0;
@@ -18,12 +19,12 @@ public class ScoreboardScript : MonoBehaviour {
 
     public void PlayerIsDead()
     {
-        if (currentScore > PlayerStats.highscore)
+        if (currentScore > PlayerStats.Highscore)
         {
-            PlayerStats.highscore = currentScore;
+            PlayerStats.Highscore = currentScore;
         }
-        PlayerStats.lastScore = currentScore;
-        SceneManager.LoadScene(1);
+        PlayerStats.LastScore = currentScore;
+        SceneManager.LoadScene(2);
     }
 
     public void IncreaseScore()

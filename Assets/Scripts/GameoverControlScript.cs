@@ -10,12 +10,15 @@ public class GameoverControlScript : MonoBehaviour {
 
     void Start()
     {
-        score.text = PlayerStats.lastScore.ToString();
-        highscore.text = PlayerStats.highscore.ToString();
+        // Load past highscore data
+        SaveAndLoad.Load();
+        score.text = "SCORE: " + PlayerStats.LastScore.ToString();
+        highscore.text = "HIGHSCORE: " + PlayerStats.Highscore.ToString();
     }
+
 
     public void PlayAgain()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
