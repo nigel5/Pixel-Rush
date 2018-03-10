@@ -5,29 +5,35 @@ using UnityEngine.UI;
 
 public class ControlPadScript : MonoBehaviour {
 
+    public GameObject playerBullet;
     Camera mCamera;
     int iColour = 0;
     Image image;
-
     Color[] colours = new Color[4] { Color.white, Color.red, Color.green, Color.blue };
 
 	// Use this for initialization
 	void Start () {
         mCamera = Camera.main;
         image = GetComponent<Image>();
-        // Set scaling so that the control pad spans the width of the screen and correct height
-        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.Space))
+        // Touch controls
+        for (int i = 0; i < Input.touchCount; i++ )
         {
-            this.OnTap();
+            if (Input.GetTouch(i).phase == TouchPhase.Began)
+            {
+                Vector3 touchPos = Input.GetTouch(i).position;
+                touchPos.z = 5;
+                touchPos.y = 0.5F;
+                Instantiate(playerBullet, mCamera.ScreenToWorldPoint(touchPos), Quaternion.identity, null);
+                OnTap(Input.GetTouch(i).position);
+            }
         }
 	}
 
-    void OnTap()
+    void OnTap(Vector3 fingerPos)
     {
         iColour += 1;
         image.color = colours[iColour];
