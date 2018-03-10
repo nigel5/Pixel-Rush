@@ -36,12 +36,17 @@ public class EnemySpriteScript : MonoBehaviour {
             Destroy(this);
         }
 
-        gameObject.transform.Translate(movementDir * Time.deltaTime);
+        gameObject.transform.Translate(movementDir * Time.deltaTime * speed);
 	}
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
-
+        if (coll.CompareTag("Player")) Destroy(gameObject);
+        else if (coll.CompareTag("PlayerHitbox"))
+        {
+            // gameover...
+            Destroy(gameObject);
+        }
     }
 
 }

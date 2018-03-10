@@ -9,7 +9,7 @@ public class ControlPadScript : MonoBehaviour {
     Camera mCamera;
     int iColour = 0;
     Image image;
-    Color[] colours = new Color[4] { Color.white, Color.red, Color.green, Color.blue };
+    Color[] colours = new Color[6] { Color.white, Color.red, Color.green, Color.blue, Color.yellow, Color.magenta };
 
 	// Use this for initialization
 	void Start () {
