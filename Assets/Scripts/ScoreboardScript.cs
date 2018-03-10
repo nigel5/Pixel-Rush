@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreboardScript : MonoBehaviour {
-
     EnemySpawnerScript enemySpawner;
     Text scoreText;
     public int currentScore = 0;
@@ -15,6 +15,16 @@ public class ScoreboardScript : MonoBehaviour {
         scoreText = GetComponent<Text>();
         scoreText.text = currentScore.ToString();	
 	}
+
+    public void PlayerIsDead()
+    {
+        if (currentScore > PlayerStats.highscore)
+        {
+            PlayerStats.highscore = currentScore;
+        }
+        PlayerStats.lastScore = currentScore;
+        SceneManager.LoadScene(1);
+    }
 
     public void IncreaseScore()
     {

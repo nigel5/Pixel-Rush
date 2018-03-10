@@ -21,7 +21,7 @@ public class EnemySpawnerScript : MonoBehaviour {
 	
     void SpawnEnemy()
     {
-        Instantiate(enemy, new Vector3(Random.Range(-xSpawnBounds, xSpawnBounds), ySpawnBounds, 5.0F), Quaternion.identity);
+        Instantiate(enemy, new Vector3(Random.Range(-xSpawnBounds + 0.02F, xSpawnBounds - 0.02F), ySpawnBounds, 5.0F), Quaternion.identity);
     }
 
     public void IncreaseSpawningSpeed()

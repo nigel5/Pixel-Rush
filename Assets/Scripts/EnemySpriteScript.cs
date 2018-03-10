@@ -52,7 +52,8 @@ public class EnemySpriteScript : MonoBehaviour {
         }
         else if (coll.CompareTag("PlayerHitbox"))
         {
-            // gameover...
+            Debug.Log("GAMEOVER");
+            sb.PlayerIsDead();
             Destroy(gameObject);
         }
     }
