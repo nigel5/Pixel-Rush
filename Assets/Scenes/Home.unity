@@ -662,7 +662,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pixel Rush
+  m_Text: Pix Defender
 --- !u!222 &1389093629
 CanvasRenderer:
   m_ObjectHideFlags: 0

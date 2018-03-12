@@ -19,6 +19,7 @@ public class ScoreboardScript : MonoBehaviour {
 
     public void PlayerIsDead()
     {
+        
         if (currentScore > PlayerStats.Highscore)
         {
             PlayerStats.Highscore = currentScore;

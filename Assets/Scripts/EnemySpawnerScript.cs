@@ -6,7 +6,7 @@ public class EnemySpawnerScript : MonoBehaviour {
 
     public GameObject enemy;
 
-    float spawningInterval = 1F;
+    float spawningInterval = 1.0F;
     float xSpawnBounds;
     float ySpawnBounds;
 
@@ -36,7 +36,7 @@ public class EnemySpawnerScript : MonoBehaviour {
         else
         {
             // Max spawning interval
-            spawningInterval = 0.05F;
+            spawningInterval = 0.10F;
         }
     }
 }
